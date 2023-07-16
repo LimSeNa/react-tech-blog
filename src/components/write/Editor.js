@@ -23,6 +23,7 @@ const TitleInput = styled.input`
 
 const QuillWrapper = styled.div`
   /* 최소 크기 지정 및 padding 제거 */
+
   .ql-editor {
     padding: 0;
     min-height: 320px;
@@ -35,7 +36,7 @@ const QuillWrapper = styled.div`
   }
 `;
 
-const Editor = () => {
+const Editor = ({onChangeField, title, body}) => {
     const quillElement = useRef(null); // Quill을 적용할 DivElement를 설정
     const quillInstance = useRef(null); // Quill 인스턴스를 설정
 
@@ -52,11 +53,27 @@ const Editor = () => {
                 ],
             },
         });
-    }, []);
+
+        // quill에 text-change 이벤트 핸들러 등록
+        const quill = quillInstance.current;
+        quill.on('text-change', (dalta, oldDelta, source) => {
+            if (source === 'user') {
+                onChangeField({key: 'body', value: quill.root.innerHTML});
+            }
+        });
+    }, [onChangeField]);
+
+    const onChangeTitle = e => {
+        onChangeField({key: 'title', value: e.target.value});
+    };
 
     return (
         <EditorBlock>
-            <TitleInput placeholder="제목을 입력하세요."/>
+            <TitleInput
+                placeholder="제목을 입력하세요."
+                value={title}
+                onChange={onChangeTitle}
+            />
             <QuillWrapper>
                 <div ref={quillElement}/>
             </QuillWrapper>
