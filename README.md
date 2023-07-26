@@ -9,6 +9,7 @@
 
 ### ✏️ 정리
 - [글쓰기 기능 구현하기](https://ssena.notion.site/25-43319da6fc7e49d28df9b9a29856a0ab?pvs=4)<br>
+- [포스트 조회 기능 구현하기](https://ssena.notion.site/26-84b5fb3024d2434cb110aceb4d8ea6a5?pvs=4)<br>
   <br>
 
 ### ✏️ 이전 학습 내용 정리

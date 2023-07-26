@@ -1,8 +1,12 @@
-import Button from "../components/common/Button";
+import PostListContainer from "../containers/posts/PostListContainer";
+import PaginationContainer from "../containers/posts/PaginationContainer";
 
 const PostListPage = () => {
     return (
-        <Button>버튼</Button>
+        <div>
+            <PostListContainer/>
+            <PaginationContainer/>
+        </div>
     );
 };
 
